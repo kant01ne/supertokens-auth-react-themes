@@ -1,0 +1,9 @@
+/node_modules
+/node_modules_tmp
+package-lock.json
+.DS_Store
+/.history
+.vscode
+coverage
+apiPassword
+releasePassword
