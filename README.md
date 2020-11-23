@@ -38,7 +38,7 @@ SuperTokens.init({
     ]
 }) // See https://supertokens.io/docs/emailpassword/starter-guide/frontend
 
-const backgroundSvgLink = "" // Your own background svg (undefined for default background)
+const backgroundLink = "LINK_TO_YOUR_BACKGROUND" // Your own background (undefined for default background)
 function App() {
   return(
       <Router>
@@ -46,8 +46,8 @@ function App() {
             <Route exact path="/login">
               <SignInAndUp >
                 <SignInAndUpFullPageTheme
-                  backgroundUrl={backgroundSvgLink}
-                  logo={"https://supertokens.io/static/assets/dark-home/logo.png"}
+                  backgroundUrl={backgroundLink}
+                  logo={"/logo.png"}
                   testimonial={{
                       quote: "Use SuperTokens themes to increase convertion to your product!",
                       name: "Kevin Antoine",
@@ -62,8 +62,8 @@ function App() {
             <Route path="/reset-password">
               <ResetPasswordUsingToken >
                 <ResetPasswordUsingTokenFullPageTheme
-                  logo={"https://supertokens.io/static/assets/dark-home/logo.png"}
-                  backgroundUrl={backgroundSvgLink}
+                  logo={"/logo.png"}
+                  backgroundUrl={backgroundLink}
                 />
               </ResetPasswordUsingToken >
             </Route>

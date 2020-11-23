@@ -21,8 +21,8 @@
 import { CSSObject, jsx } from "@emotion/core";
 import * as React from "react";
 import { Styles } from "supertokens-auth-react/lib/build/types";
-import { StyleConsumer } from "../styles/styleContext";
-import { Testimonial } from "../types";
+import { StyleConsumer } from "supertokens-auth-react/lib/build/recipe/emailpassword/components/styles/styleContext";
+import { Testimonial } from "./types";
 
 /*
  * Props.
@@ -72,7 +72,11 @@ function getComponentStyle({ testimonial, logo }: { testimonial?: Testimonial; l
                 position: "absolute",
                 left: "3.5rem",
                 top: "2.5rem"
-            } as CSSObject
+            } as CSSObject,
+            pageLogoImg: {
+                maxHeight: "80px",
+                maxWidth: "200px"
+            }
         };
         if (logo.endsWith(".svg")) {
             logoStyles.pageLogo.background = `url(${logo}) no-repeat`;
@@ -103,8 +107,14 @@ export default function Page({ form, header, toggle, testimonial, logo }: PagePr
                             </div>
                         )}
                         {logo !== undefined && (
-                            <a href="/" className="logoStyles" css={[componentStyle.pageLogo, styles.pageLogo]}>
-                                {!logo.endsWith(".svg") && <img height="30px" src={logo} />}
+                            <a href="/" className="pageLogo" css={[componentStyle.pageLogo, styles.pageLogo]}>
+                                {!logo.endsWith(".svg") && (
+                                    <img
+                                        className="pageLogoImg"
+                                        css={[componentStyle.pageLogoImg, styles.pageLogoImg]}
+                                        src={logo}
+                                    />
+                                )}
                             </a>
                         )}
                     </div>

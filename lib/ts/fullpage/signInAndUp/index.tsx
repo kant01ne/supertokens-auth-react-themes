@@ -23,10 +23,14 @@ import SignIn from "./SignIn";
 import { SignInAndUpFullPageThemeProps, SignInAndUpThemeWrapperProps } from "../types";
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
-import Page from "../library/page";
+import Page from "../page";
 import SuperTokens from "supertokens-auth-react/lib/build/superTokens";
-import { StyleConsumer } from "../styles/styleContext";
+import {
+    StyleConsumer,
+    StyleProvider
+} from "supertokens-auth-react/lib/build/recipe/emailpassword/components/styles/styleContext";
 import BaseTheme from "../baseTheme";
+import { defaultPalette, getDefaultStyles } from "../styles/styles";
 
 /*
  * Component.
@@ -46,62 +50,72 @@ function SignInAndUpTheme(props: SignInAndUpFullPageThemeProps): JSX.Element {
     // If isSignIn, return signIn.
     if (isSignIn) {
         return (
-            <StyleConsumer>
-                {styles => (
-                    <Page
-                        logo={props.logo}
-                        toggle={
-                            <Fragment>
-                                Not a customer?{" "}
-                                <span
-                                    className="headerTogglePrimary"
-                                    css={styles.headerTogglePrimary}
-                                    onClick={() => setSignIn(false)}>
-                                    Get started for free
-                                </span>
-                            </Fragment>
-                        }
-                        header={
-                            <Fragment>
-                                <span className="headerTitle" css={styles.headerTitle}>
-                                    Sign in to {SuperTokens.getAppInfo().appName}
-                                </span>
-                            </Fragment>
-                        }
-                        form={<SignIn {...props.signInForm} />}
-                        testimonial={props.testimonial}
-                    />
-                )}
-            </StyleConsumer>
+            <StyleProvider
+                defaultPalette={defaultPalette}
+                getDefaultStyles={getDefaultStyles}
+                styleFromInit={props.signInForm.styleFromInit}>
+                <StyleConsumer>
+                    {styles => (
+                        <Page
+                            logo={props.logo}
+                            toggle={
+                                <Fragment>
+                                    Not a customer?{" "}
+                                    <span
+                                        className="headerTogglePrimary"
+                                        css={styles.headerTogglePrimary}
+                                        onClick={() => setSignIn(false)}>
+                                        Get started for free
+                                    </span>
+                                </Fragment>
+                            }
+                            header={
+                                <Fragment>
+                                    <span className="headerTitle" css={styles.headerTitle}>
+                                        Sign in to {SuperTokens.getAppInfo().appName}
+                                    </span>
+                                </Fragment>
+                            }
+                            form={<SignIn {...props.signInForm} />}
+                            testimonial={props.testimonial}
+                        />
+                    )}
+                </StyleConsumer>
+            </StyleProvider>
         );
     }
 
     // Otherwise, return SignUp.
     return (
-        <StyleConsumer>
-            {styles => (
-                <Page
-                    logo={props.logo}
-                    toggle={
-                        <div className="headerTogglePrimary" css={styles.headerTogglePrimary}>
-                            <span onClick={() => setSignIn(true)}>Sign in</span>
-                        </div>
-                    }
-                    header={
-                        <Fragment>
-                            <span className="headerTitle" css={styles.headerTitle}>
-                                Get started for free.
-                            </span>
-                            <span className="headerSubtitle" css={styles.headerSubtitle}>
-                                No credit card required.
-                            </span>
-                        </Fragment>
-                    }
-                    form={<SignUp {...props.signUpForm} />}
-                    testimonial={props.testimonial}
-                />
-            )}
-        </StyleConsumer>
+        <StyleProvider
+            defaultPalette={defaultPalette}
+            getDefaultStyles={getDefaultStyles}
+            styleFromInit={props.signUpForm.styleFromInit}>
+            <StyleConsumer>
+                {styles => (
+                    <Page
+                        logo={props.logo}
+                        toggle={
+                            <div className="headerTogglePrimary" css={styles.headerTogglePrimary}>
+                                <span onClick={() => setSignIn(true)}>Sign in</span>
+                            </div>
+                        }
+                        header={
+                            <Fragment>
+                                <span className="headerTitle" css={styles.headerTitle}>
+                                    Get started for free.
+                                </span>
+                                <span className="headerSubtitle" css={styles.headerSubtitle}>
+                                    No credit card required.
+                                </span>
+                            </Fragment>
+                        }
+                        form={<SignUp {...props.signUpForm} />}
+                        testimonial={props.testimonial}
+                    />
+                )}
+            </StyleConsumer>
+        </StyleProvider>
     );
 }
 

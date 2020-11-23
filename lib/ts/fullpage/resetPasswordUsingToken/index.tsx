@@ -17,8 +17,10 @@
  * Imports.
  */
 import * as React from "react";
+import { StyleProvider } from "supertokens-auth-react/lib/build/recipe/emailpassword/components/styles/styleContext";
 import BaseTheme from "../baseTheme";
-import Page from "../library/page";
+import Page from "../page";
+import { defaultPalette, getDefaultStyles } from "../styles/styles";
 import { ResetPasswordUsingTokenFullPageThemeProps, ResetPasswordUsingTokenThemeWrapperProps } from "../types";
 
 import EnterEmail from "./enterEmail";
@@ -35,11 +37,25 @@ function ResetPasswordUsingTokenTheme(props: ResetPasswordUsingTokenFullPageThem
 
     // If no token, return SubmitNewPassword.
     if (props.hasToken) {
-        return <Page form={<SubmitNewPassword {...props.submitNewPassword} />} logo={props.logo} />;
+        return (
+            <StyleProvider
+                defaultPalette={defaultPalette}
+                getDefaultStyles={getDefaultStyles}
+                styleFromInit={props.enterEmailForm.styleFromInit}>
+                <Page form={<SubmitNewPassword {...props.submitNewPasswordForm} />} logo={props.logo} />
+            </StyleProvider>
+        );
     }
 
     // Otherwise, return EnterEmail.
-    return <Page form={<EnterEmail {...props.enterEmail} />} logo={props.logo} />;
+    return (
+        <StyleProvider
+            defaultPalette={defaultPalette}
+            getDefaultStyles={getDefaultStyles}
+            styleFromInit={props.enterEmailForm.styleFromInit}>
+            <Page form={<EnterEmail {...props.enterEmailForm} />} logo={props.logo} />
+        </StyleProvider>
+    );
 }
 
 function ResetPasswordUsingTokenThemeWrapper(props: ResetPasswordUsingTokenThemeWrapperProps): JSX.Element {
@@ -49,8 +65,8 @@ function ResetPasswordUsingTokenThemeWrapper(props: ResetPasswordUsingTokenTheme
         <BaseTheme backgroundUrl={props.backgroundUrl}>
             <ResetPasswordUsingTokenTheme
                 logo={logo}
-                submitNewPassword={submitNewPasswordForm}
-                enterEmail={enterEmailForm}
+                submitNewPasswordForm={submitNewPasswordForm}
+                enterEmailForm={enterEmailForm}
                 hasToken={hasToken}
             />
         </BaseTheme>

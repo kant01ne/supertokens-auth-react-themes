@@ -22,10 +22,10 @@ import { CSSObject } from "@emotion/serialize/types";
 
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
-import FormBase from "../library/FormBase";
-import { StyleConsumer, StyleProvider } from "../styles/styleContext";
+import { StyleConsumer } from "supertokens-auth-react/lib/build/recipe/emailpassword/components/styles/styleContext";
 import SignUpFooter from "./SignUpFooter";
 import { NormalisedPalette } from "../types";
+import FormBase from "supertokens-auth-react/lib/build/recipe/emailpassword/components/library/FormBase";
 
 /*
  * Styles.
@@ -92,33 +92,31 @@ export default class SignUpTheme extends PureComponent<SignUpThemeProps, { formF
      * Render.
      */
     render(): JSX.Element {
-        const { privacyPolicyLink, termsOfServiceLink, styleFromInit, onSuccess, callAPI } = this.props;
+        const { privacyPolicyLink, termsOfServiceLink, onSuccess, callAPI } = this.props;
         const { formFields } = this.state;
         return (
-            <StyleProvider styleFromInit={styleFromInit}>
-                <StyleConsumer>
-                    {styles => {
-                        const componentStyles = getStyles(styles.palette as NormalisedPalette);
+            <StyleConsumer>
+                {styles => {
+                    const componentStyles = getStyles(styles.palette as NormalisedPalette);
 
-                        return (
-                            <FormBase
-                                formFields={formFields}
-                                buttonLabel={"SIGN UP"}
-                                onSuccess={onSuccess}
-                                callAPI={callAPI}
-                                showLabels={true}
-                                footer={
-                                    <SignUpFooter
-                                        componentStyles={componentStyles}
-                                        privacyPolicyLink={privacyPolicyLink}
-                                        termsOfServiceLink={termsOfServiceLink}
-                                    />
-                                }
-                            />
-                        );
-                    }}
-                </StyleConsumer>
-            </StyleProvider>
+                    return (
+                        <FormBase
+                            formFields={formFields}
+                            buttonLabel={"SIGN UP"}
+                            onSuccess={onSuccess}
+                            callAPI={callAPI}
+                            showLabels={true}
+                            footer={
+                                <SignUpFooter
+                                    componentStyles={componentStyles}
+                                    privacyPolicyLink={privacyPolicyLink}
+                                    termsOfServiceLink={termsOfServiceLink}
+                                />
+                            }
+                        />
+                    );
+                }}
+            </StyleConsumer>
         );
     }
 }

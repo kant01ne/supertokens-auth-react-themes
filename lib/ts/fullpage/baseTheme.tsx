@@ -33,9 +33,10 @@ export function getStyles(backgroundUrlFromUser?: string): Styles {
             : "https://dbd6j53uzcole.cloudfront.net/assets/images/auth/background.dabff70d179a0bd98ed5a141d44d27cb.svg";
     return {
         root: {
+            fontFamily:
+                "brown,-apple-system,BlinkMacSystemFont,avenir,lucida grande,gill sans,helvetica neue,helvetica,sans-serif",
             background: `#4949e4 url(${backgroundUrl}) no-repeat`,
             backgroundSize: "cover",
-            margin: "-26px",
             position: "relative",
             width: "100vw",
             justifyContent: "center",

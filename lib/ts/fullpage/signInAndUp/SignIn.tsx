@@ -24,9 +24,9 @@ import { CSSObject } from "@emotion/serialize/types";
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
 
-import FormBase from "../library/FormBase";
+import FormBase from "supertokens-auth-react/lib/build/recipe/emailpassword/components/library/FormBase";
 import { Styles } from "supertokens-auth-react/lib/build/types";
-import { StyleConsumer, StyleProvider } from "../styles/styleContext";
+import { StyleConsumer } from "supertokens-auth-react/lib/build/recipe/emailpassword/components/styles/styleContext";
 import { NormalisedPalette } from "../types";
 
 /*
@@ -83,39 +83,37 @@ export default class SignInTheme extends PureComponent<SignInThemeProps, { formF
      */
 
     render(): JSX.Element {
-        const { forgotPasswordClick, styleFromInit, onSuccess, callAPI } = this.props;
+        const { forgotPasswordClick, onSuccess, callAPI } = this.props;
         const { formFields } = this.state;
 
         return (
-            <StyleProvider styleFromInit={styleFromInit}>
-                <StyleConsumer>
-                    {styles => {
-                        const componentStyle = getStyles(styles.palette as NormalisedPalette);
-                        return (
-                            <FormBase
-                                formFields={formFields}
-                                buttonLabel={"SIGN IN"}
-                                onSuccess={onSuccess}
-                                callAPI={callAPI}
-                                showLabels={true}
-                                footer={
-                                    <div
-                                        className="link secondaryText forgotPasswordLink"
-                                        css={[
-                                            styles.link,
-                                            styles.secondaryText,
-                                            componentStyle.forgotPasswordLink,
-                                            styles.forgotPasswordLink
-                                        ]}
-                                        onClick={forgotPasswordClick}>
-                                        Forgot password?
-                                    </div>
-                                }
-                            />
-                        );
-                    }}
-                </StyleConsumer>
-            </StyleProvider>
+            <StyleConsumer>
+                {styles => {
+                    const componentStyle = getStyles(styles.palette as NormalisedPalette);
+                    return (
+                        <FormBase
+                            formFields={formFields}
+                            buttonLabel={"SIGN IN"}
+                            onSuccess={onSuccess}
+                            callAPI={callAPI}
+                            showLabels={true}
+                            footer={
+                                <div
+                                    className="link secondaryText forgotPasswordLink"
+                                    css={[
+                                        styles.link,
+                                        styles.secondaryText,
+                                        componentStyle.forgotPasswordLink,
+                                        styles.forgotPasswordLink
+                                    ]}
+                                    onClick={forgotPasswordClick}>
+                                    Forgot password?
+                                </div>
+                            }
+                        />
+                    );
+                }}
+            </StyleConsumer>
         );
     }
 }

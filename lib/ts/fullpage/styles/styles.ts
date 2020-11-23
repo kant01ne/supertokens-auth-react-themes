@@ -124,14 +124,22 @@ export function getDefaultStyles(palette: NormalisedPalette): NormalisedDefaultS
             alignItems: "stretch",
             boxShadow: "0 0 40px rgba(0,0,0,.3)",
             color: "#494854",
-            marginBottom: "2rem"
+            marginBottom: "2rem",
+            margin: "0 auto",
+            "@media (max-width: 440px)": {
+                margin: "12px auto",
+                minWidth: "90%"
+            }
         },
         pageForm: {
             borderRadius: "0 5px 5px 0",
             flexShrink: 0,
             flexGrow: 0,
             width: "50%",
-            margin: 0
+            margin: 0,
+            "@media (max-width: 440px)": {
+                width: "100%"
+            }
         },
         pageTestimonial: {
             background: "#f2f2f4",

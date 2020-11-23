@@ -13,7 +13,7 @@ let resetPasswordURL = window.location.pathname.startsWith("/theme/fullpage/auth
 
 SuperTokens.init({
   appInfo: {
-    appName: "SuperTokens",
+    appName: "Example App",
     websiteDomain: "localhost:3032",
     apiDomain: "localhost:8082"
   },

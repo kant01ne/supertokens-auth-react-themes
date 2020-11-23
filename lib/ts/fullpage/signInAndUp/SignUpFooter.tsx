@@ -19,7 +19,7 @@
 
 import React from "react";
 import { Styles } from "supertokens-auth-react/lib/build/types";
-import { StyleConsumer } from "../styles/styleContext";
+import { StyleConsumer } from "supertokens-auth-react/lib/build/recipe/emailpassword/components/styles/styleContext";
 
 /** @jsx jsx */
 import { jsx } from "@emotion/core";

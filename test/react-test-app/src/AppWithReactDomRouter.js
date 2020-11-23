@@ -26,7 +26,7 @@ function AppWithReactDomRouter() {
               <SignInAndUp >
                 <SignInAndUpFullPageTheme
                   backgroundUrl={`/backgrounds/background${backgroundId}.svg`}
-                  logo={"https://supertokens.io/static/assets/dark-home/logo.png"}
+                  logo={"/logo.png"}
                   testimonial={{
                       quote: "Use SuperTokens themes to increase convertion to your product!",
                       name: "Kevin Antoine",
@@ -41,8 +41,7 @@ function AppWithReactDomRouter() {
             <Route path="/theme/fullpage/auth/reset-password">
               <ResetPasswordUsingToken >
                 <ResetPasswordUsingTokenFullPageTheme
-                  logo={"https://supertokens.io/static/assets/dark-home/logo.png"}
-                  // logo={"https://dbd6j53uzcole.cloudfront.net/assets/images/logos/b.bbdd29c1e022d8800d7be23e476d38dd.svg"}
+                  logo={"/logo.png"}
                   backgroundUrl={`/backgrounds/background${backgroundId}.svg`}
                 />
               </ResetPasswordUsingToken >

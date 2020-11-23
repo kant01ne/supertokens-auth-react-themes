@@ -28,11 +28,14 @@ import {
     SubmitNewPasswordThemeProps,
     SubmitNewPasswordThemeState
 } from "supertokens-auth-react/lib/build/recipe/emailpassword/types";
-import { FormRow, Button } from "../library";
-import FormBase from "../library/FormBase";
-import { StyleProvider, StyleConsumer } from "../styles/styleContext";
+import {
+    StyleConsumer,
+    StyleProvider
+} from "supertokens-auth-react/lib/build/recipe/emailpassword/components/styles/styleContext";
 import { NormalisedPalette } from "../types";
-
+import { FormRow, Button } from "supertokens-auth-react/lib/build/recipe/emailpassword/components/library";
+import FormBase from "supertokens-auth-react/lib/build/recipe/emailpassword/components/library/FormBase";
+import { defaultPalette, getDefaultStyles } from "../styles/styles";
 /*
  * Styles.
  */
@@ -111,7 +114,10 @@ export default class SubmitNewPasswordTheme extends PureComponent<
         const { formFields, hasNewPassword } = this.state;
 
         return (
-            <StyleProvider styleFromInit={styleFromInit}>
+            <StyleProvider
+                defaultPalette={defaultPalette}
+                getDefaultStyles={getDefaultStyles}
+                styleFromInit={styleFromInit}>
                 <StyleConsumer>
                     {styles => {
                         const componentStyles = getStyles(styles.palette);

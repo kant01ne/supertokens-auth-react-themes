@@ -1,5 +1,5 @@
 import { CSSObject } from "@emotion/core";
-import { EnterEmailThemeProps, ResetPasswordUsingTokenThemeProps, SignInAndUpThemeProps, SubmitNewPasswordThemeProps } from "supertokens-auth-react/lib/build/recipe/emailpassword/types";
+import { ResetPasswordUsingTokenThemeProps, SignInAndUpThemeProps } from "supertokens-auth-react/lib/build/recipe/emailpassword/types";
 export declare enum paletteColorOptions {
     BACKGROUND = "background",
     INPUTBACKGROUND = "inputBackground",
@@ -66,10 +66,7 @@ export declare type SignInAndUpThemeWrapperProps = SignInAndUpThemeProps & {
     testimonial?: Testimonial;
     backgroundUrl?: string;
 };
-export declare type ResetPasswordUsingTokenThemeWrapperProps = {
-    enterEmailForm: EnterEmailThemeProps;
-    submitNewPasswordForm: SubmitNewPasswordThemeProps;
-    hasToken: boolean;
+export declare type ResetPasswordUsingTokenThemeWrapperProps = ResetPasswordUsingTokenThemeProps & {
     backgroundUrl?: string;
     logo?: string;
 };

@@ -1,5 +1,5 @@
 /// <reference types="react" />
-import { Testimonial } from "../types";
+import { Testimonial } from "./types";
 declare type PageProps = {
     form: JSX.Element;
     header?: JSX.Element;
