@@ -13,10 +13,15 @@
  * under the License.
  */
 
-/*
- * Imports.
- */
-import Hydrogen from "./hydrogen";
-import Helium from "./helium/";
+import {
+    ResetPasswordUsingTokenThemeProps as ResetPasswordUsingTokenDefaultThemeProps,
+    SignInAndUpThemeProps as SignInAndUpDefaultThemeProps
+} from "supertokens-auth-react/lib/build/recipe/emailpassword/types";
 
-export { Hydrogen, Helium };
+export type SignInAndUpThemeProps = SignInAndUpDefaultThemeProps & {
+    logo?: string;
+};
+
+export type ResetPasswordUsingTokenThemeProps = ResetPasswordUsingTokenDefaultThemeProps & {
+    logo?: string;
+};

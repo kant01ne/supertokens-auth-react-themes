@@ -9,7 +9,7 @@ import EmailPassword from 'supertokens-auth-react/recipe/emailpassword';
 import Session from 'supertokens-auth-react/recipe/session';
 
 
-let resetPasswordURL = window.location.pathname.startsWith("/theme/fullpage/auth") === true ? "/theme/fullpage/auth/reset-password" : "/auth/reset-password";
+const resetPasswordURL = getResetPasswordUrl();
 
 SuperTokens.init({
   appInfo: {
@@ -81,4 +81,12 @@ export function BaseComponent ({children}) {
         <Footer/>
       </Fragment>
   )
+}
+
+function getResetPasswordUrl () {
+  let pathArr = window.location.pathname.split("/");
+  if (pathArr[1] === "theme") {
+    return `/theme/${pathArr[2]}/auth/reset-password`;
+  }
+  return undefined;
 }

@@ -1,3 +1,3 @@
-import SignInAndUpFullPageTheme from "./fullpage/signInAndUp";
-import ResetPasswordUsingTokenFullPageTheme from "./fullpage/resetPasswordUsingToken";
-export { SignInAndUpFullPageTheme, ResetPasswordUsingTokenFullPageTheme };
+import Hydrogen from "./hydrogen";
+import Helium from "./helium/";
+export { Hydrogen, Helium };

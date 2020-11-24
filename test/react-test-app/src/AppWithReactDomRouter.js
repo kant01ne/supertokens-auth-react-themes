@@ -6,11 +6,16 @@ import {
   Link
 } from "react-router-dom";
 import {SignInAndUp, ResetPasswordUsingToken} from 'supertokens-auth-react/recipe/emailpassword';
-import {SignInAndUpFullPageTheme, ResetPasswordUsingTokenFullPageTheme} from 'supertokens-auth-react-themes/';
+import {
+  Hydrogen,
+  Helium
+} from 'supertokens-auth-react-themes/';
 import {BaseComponent} from './App';
 
 const backgroundId = getQueryParams("backgroundId") || Math.floor(Math.random() * 20) +1;
-console.log("BackgroundId", backgroundId);
+const backgroundUrl = `/backgrounds/background${backgroundId}.svg`;
+const logo = "/logo.png"
+
 function AppWithReactDomRouter() {
 
   return (
@@ -22,11 +27,11 @@ function AppWithReactDomRouter() {
                 <Nav/> 
               </BaseComponent>
             </Route>
-            <Route exact path="/theme/fullpage/auth">
+            <Route exact path="/theme/hydrogen/auth">
               <SignInAndUp >
-                <SignInAndUpFullPageTheme
-                  backgroundUrl={`/backgrounds/background${backgroundId}.svg`}
-                  logo={"/logo.png"}
+                <Hydrogen.SignInAndUpTheme
+                  backgroundUrl={backgroundUrl}
+                  logo={logo}
                   testimonial={{
                       quote: "Use SuperTokens themes to increase convertion to your product!",
                       name: "Kevin Antoine",
@@ -38,11 +43,27 @@ function AppWithReactDomRouter() {
                 />
               </SignInAndUp >
             </Route>
-            <Route path="/theme/fullpage/auth/reset-password">
+            <Route path="/theme/hydrogen/auth/reset-password">
               <ResetPasswordUsingToken >
-                <ResetPasswordUsingTokenFullPageTheme
-                  logo={"/logo.png"}
-                  backgroundUrl={`/backgrounds/background${backgroundId}.svg`}
+                <Hydrogen.ResetPasswordUsingTokenTheme
+                  logo={logo}
+                  backgroundUrl={backgroundUrl}
+                />
+              </ResetPasswordUsingToken >
+            </Route>
+
+            {/* Helium */}
+            <Route exact path="/theme/helium/auth">
+              <SignInAndUp >
+                <Helium.SignInAndUpTheme
+                  logo={logo}
+                />
+              </SignInAndUp >
+            </Route>
+            <Route path="/theme/helium/auth/reset-password">
+              <ResetPasswordUsingToken >
+                <Helium.ResetPasswordUsingTokenTheme
+                  logo={logo}
                 />
               </ResetPasswordUsingToken >
             </Route>
@@ -63,7 +84,8 @@ function Nav () {
     <nav className="menu__body">
       <ul className="menu__list">
         <li key="home"><Link  className="menu__link" style={{ textDecoration: 'none' }} to="/">Home</Link></li>
-        <li key="custom4"><a className="menu__link" style={{ textDecoration: 'none' }} href="/theme/fullpage/auth">Fullpage Theme</a></li>
+        <li key="hydrogen"><a className="menu__link" style={{ textDecoration: 'none' }} href="/theme/hydrogen/auth">Hydrogen</a></li>
+        <li key="helium"><a className="menu__link" style={{ textDecoration: 'none' }} href="/theme/helium/auth">Helium</a></li>
       </ul>
     </nav>
   </div>

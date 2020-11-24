@@ -18,3 +18,5 @@ frontendDriverInterfaceSupported.json
 .github/
 .babelrc
 .gitattributes
+assets/
+docs/

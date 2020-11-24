@@ -16,7 +16,11 @@
 /*
  * Imports.
  */
-import Hydrogen from "./hydrogen";
-import Helium from "./helium/";
 
-export { Hydrogen, Helium };
+import SignInAndUpTheme from "./signInAndUp";
+import ResetPasswordUsingTokenTheme from "./resetPasswordUsingToken";
+
+export default {
+    SignInAndUpTheme,
+    ResetPasswordUsingTokenTheme
+};
