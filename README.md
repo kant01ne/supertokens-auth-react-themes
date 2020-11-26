@@ -7,6 +7,10 @@
 You can use it as is and you can also fork this repository to fully customize this theme for your own use. 
 Please contact us if you'd like your theme to be listed in this repository for other people to use.
 
+
+## Demo
+
+[Live Demo](http://supertokens-auth-react-theme.surge.sh/)
 ## Examples
 
 ### Hydrogen
