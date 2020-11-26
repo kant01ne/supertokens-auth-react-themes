@@ -30,6 +30,7 @@ function App() {
             <Route exact path="/login">
               <SignInAndUp >
                 <Lithium.SignInAndUpTheme
+                  backgroundUrl={"/backgroundUrl.svg"}
                   logo={"/logo.png"}
                 />
               </SignInAndUp >
@@ -37,6 +38,7 @@ function App() {
             <Route path="/reset-password">
               <ResetPasswordUsingToken >
                 <Lithium.ResetPasswordUsingTokenTheme
+                  backgroundUrl={"/backgroundUrl.svg"}
                   logo={"/logo.png"}
                 />
               </ResetPasswordUsingToken >
