@@ -225,17 +225,6 @@ export function getDefaultStyles(palette: NormalisedPalette): NormalisedDefaultS
             height: "25px"
         },
 
-        inputAdornment: {
-            float: "right",
-            left: "-2%",
-            top: "-47px",
-            position: "relative",
-            borderRadius: "12px",
-            display: "flex",
-            alignItems: "center",
-            height: "0px"
-        },
-
         inputErrorMessage: {
             color: palette.colors.error,
             lineHeight: "24px",
@@ -243,6 +232,13 @@ export function getDefaultStyles(palette: NormalisedPalette): NormalisedDefaultS
             fontSize: "14px",
             textAlign: "left",
             animation: `${slideTop} 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both`
+        },
+
+        inputErrorSymbol: {
+            marginRight: "5px",
+            top: "1px",
+            position: "relative",
+            left: "2px"
         },
 
         button: {
@@ -260,7 +256,8 @@ export function getDefaultStyles(palette: NormalisedPalette): NormalisedDefaultS
             backgroundColor: palette.colors.primary,
             borderWidth: "0px",
             "&:disabled": {
-                cursor: "no-drop"
+                cursor: "no-drop",
+                opacity: ".7"
             },
             "&:active": {
                 outline: "none",

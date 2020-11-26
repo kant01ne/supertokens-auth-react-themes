@@ -59,16 +59,9 @@ function ResetPasswordUsingTokenTheme(props: ResetPasswordUsingTokenThemeProps):
 }
 
 function ResetPasswordUsingTokenThemeWrapper(props: ResetPasswordUsingTokenThemeWrapperProps): JSX.Element {
-    const { submitNewPasswordForm, enterEmailForm, hasToken, logo } = props;
-
     return (
         <BaseTheme backgroundUrl={props.backgroundUrl}>
-            <ResetPasswordUsingTokenTheme
-                logo={logo}
-                submitNewPasswordForm={submitNewPasswordForm}
-                enterEmailForm={enterEmailForm}
-                hasToken={hasToken}
-            />
+            <ResetPasswordUsingTokenTheme {...props} />
         </BaseTheme>
     );
 }

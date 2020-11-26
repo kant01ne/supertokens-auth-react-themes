@@ -39,9 +39,8 @@ type PageProps = {
 /*
  * Styles.
  */
-function getComponentStyle({ testimonial, logo }: { testimonial?: Testimonial; logo?: string }): Styles {
+function getComponentStyle({ testimonial }: { testimonial?: Testimonial }): Styles {
     let testimonialStyles: Record<string, CSSObject> = {};
-    let logoStyles: Record<string, CSSObject> = {};
     if (testimonial === undefined) {
         testimonialStyles = {
             pageForm: {
@@ -60,33 +59,24 @@ function getComponentStyle({ testimonial, logo }: { testimonial?: Testimonial; l
             } as CSSObject
         };
     }
-    if (logo !== undefined) {
-        logoStyles = {
-            pageLogo: {
-                width: "2rem",
-                height: "2rem",
-                "@media (max-width: 440px)": {
-                    display: "none"
-                },
-                display: "block",
-                position: "absolute",
-                left: "3.5rem",
-                top: "2.5rem"
-            } as CSSObject,
-            pageLogoImg: {
-                maxHeight: "80px",
-                maxWidth: "200px"
-            }
-        };
-        if (logo.endsWith(".svg")) {
-            logoStyles.pageLogo.background = `url(${logo}) no-repeat`;
-            logoStyles.pageLogo.backgroundSize = "contain";
-        }
-    }
 
     return {
         ...testimonialStyles,
-        ...logoStyles
+        pageLogo: {
+            width: "2rem",
+            height: "2rem",
+            "@media (max-width: 440px)": {
+                display: "none"
+            },
+            display: "block",
+            position: "absolute",
+            left: "3.5rem",
+            top: "2.5rem"
+        } as CSSObject,
+        pageLogoImg: {
+            maxHeight: "80px",
+            maxWidth: "200px"
+        } as CSSObject
     };
 }
 
@@ -95,7 +85,7 @@ function getComponentStyle({ testimonial, logo }: { testimonial?: Testimonial; l
  */
 
 export default function Page({ form, header, toggle, testimonial, logo }: PageProps): JSX.Element {
-    const componentStyle = getComponentStyle({ testimonial, logo });
+    const componentStyle = getComponentStyle({ testimonial });
     return (
         <StyleConsumer>
             {styles => (
@@ -108,13 +98,11 @@ export default function Page({ form, header, toggle, testimonial, logo }: PagePr
                         )}
                         {logo !== undefined && (
                             <a href="/" className="pageLogo" css={[componentStyle.pageLogo, styles.pageLogo]}>
-                                {!logo.endsWith(".svg") && (
-                                    <img
-                                        className="pageLogoImg"
-                                        css={[componentStyle.pageLogoImg, styles.pageLogoImg]}
-                                        src={logo}
-                                    />
-                                )}
+                                <img
+                                    className="pageLogoImg"
+                                    css={[componentStyle.pageLogoImg, styles.pageLogoImg]}
+                                    src={logo}
+                                />
                             </a>
                         )}
                     </div>

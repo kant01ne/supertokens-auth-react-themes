@@ -237,6 +237,13 @@ export function getDefaultStyles(palette: NormalisedPalette): NormalisedDefaultS
             animation: `${swingIn} 1s cubic-bezier(0.175, 0.885, 0.320, 1.275) both`
         },
 
+        inputErrorSymbol: {
+            marginRight: "5px",
+            top: "1px",
+            position: "relative",
+            left: "2px"
+        },
+
         inputWrapper: {
             float: "left",
             width: "100%"
@@ -267,17 +274,6 @@ export function getDefaultStyles(palette: NormalisedPalette): NormalisedDefaultS
             "@media (max-width: 440px)": {
                 backgroundPosition: "84% 50% !important"
             }
-        },
-
-        inputAdornment: {
-            float: "right",
-            left: "-2%",
-            top: "-19px",
-            position: "relative",
-            borderRadius: "12px",
-            display: "flex",
-            alignItems: "center",
-            height: "0px"
         },
 
         inputErrorMessage: {

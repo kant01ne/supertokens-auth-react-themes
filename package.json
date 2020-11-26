@@ -30,17 +30,16 @@
     "react-dom": "^16.0.0",
     "react-router-dom": "5.2.0",
     "regenerator-runtime": "0.13.7",
-    "supertokens-website": "5.0.1",
     "tslint": "6.1.3",
     "typescript": "3.5.2",
     "@emotion/core": "^10.0.27",
-    "supertokens-auth-react": "https://github.com/supertokens/supertokens-auth-react#0.1",
+    "supertokens-auth-react": "https://github.com/supertokens/supertokens-auth-react#0.2-validate-on-blur",
     "emotion": "^10.0.27",
     "emotion-server": "^10.0.27"
   },
   "peerDependencies": {
     "@emotion/core": "^10.0.27",
-    "supertokens-auth-react": "https://github.com/supertokens/supertokens-auth-react#0.1",
+    "supertokens-auth-react": "https://github.com/supertokens/supertokens-auth-react#0.2-validate-on-blur",
     "emotion": "10.0.27",
     "react-shadow": "18.4.2",
     "emotion-server": "10.0.27"

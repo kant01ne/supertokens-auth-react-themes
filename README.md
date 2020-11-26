@@ -28,6 +28,12 @@ Please contact us if you'd like your theme to be listed in this repository for o
 
 ![Screenshot 1](./assets/helium/screenshot1.png?raw=true)
 
+### Lithium
+
+[Theme's Doc](./docs/Lithium.md)
+
+![Screenshot 1](./assets/lithium/screenshot1.png?raw=true)
+
 ## Documentation
 To see documentation, please click [here](https://supertokens.io/docs/auth-react/installation).
 

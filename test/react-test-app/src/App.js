@@ -1,12 +1,22 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import './App.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 
-import AppWithReactDomRouter from './AppWithReactDomRouter';
-import Footer from "./Footer";
+import PeriodicTable from "./PeriodicTable";
+
 /* SuperTokens imports */
 import SuperTokens from 'supertokens-auth-react';
 import EmailPassword from 'supertokens-auth-react/recipe/emailpassword';
 import Session from 'supertokens-auth-react/recipe/session';
+
+/* SuperTokens Theme imports */
+import HydrogenComponents from "./Components/Hydrogen";
+import HeliumComponents from "./Components/Helium";
+import LithiumComponents from "./Components/Lithium";
 
 
 const resetPasswordURL = getResetPasswordUrl();
@@ -19,6 +29,11 @@ SuperTokens.init({
   },
   recipeList: [
     EmailPassword.init({
+      // palette: {
+      //   background: "#000",
+      //   primary: "#000",
+      //   textLink: "red"
+      // },
       useShadowDom: false,
       resetPasswordUsingTokenFeature:{
         disableDefaultImplementation: true,
@@ -66,22 +81,43 @@ SuperTokens.init({
 
 /* App */
 function App() {
-  
-  return <AppWithReactDomRouter/>
+  return (
+    <Router>
+      <Switch>
+
+          {/* Hydrogen Theme */}
+          <Route exact path="/theme/hydrogen/auth">
+            <HydrogenComponents.Auth />
+          </Route>
+          <Route exact path="/theme/hydrogen/auth/reset-password">
+            <HydrogenComponents.ResetPassword />
+          </Route>
+
+          {/* Helium Theme */}
+          <Route exact path="/theme/helium/auth">
+            <HeliumComponents.Auth />
+          </Route>
+          <Route exact path="/theme/helium/auth/reset-password">
+            <HeliumComponents.ResetPassword />
+          </Route>
+
+          {/* Lithium Theme */}
+          <Route exact path="/theme/lithium/auth">
+            <LithiumComponents.Auth />
+          </Route>
+          <Route exact path="/theme/lithium/auth/reset-password">
+            <LithiumComponents.ResetPassword />
+          </Route>
+
+          <Route path="/">
+            <PeriodicTable />
+          </Route>
+      </Switch>
+    </Router>
+  );
 }
 
 export default App;
-
-export function BaseComponent ({children}) {
-  return (
-       <Fragment>
-       <div className="page">
-          {children}
-       </div>
-        <Footer/>
-      </Fragment>
-  )
-}
 
 function getResetPasswordUrl () {
   let pathArr = window.location.pathname.split("/");

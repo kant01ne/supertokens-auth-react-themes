@@ -1,3 +1,4 @@
 import Hydrogen from "./hydrogen";
 import Helium from "./helium/";
-export { Hydrogen, Helium };
+import Lithium from "./lithium/";
+export { Hydrogen, Helium, Lithium };
