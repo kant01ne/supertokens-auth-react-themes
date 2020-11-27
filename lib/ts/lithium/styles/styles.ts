@@ -261,6 +261,10 @@ export function getThemeStyles(palette: NormalisedPalette): NormalisedDefaultSty
             marginBottom: "15px"
         },
 
+        secondaryText: {
+            marginBottom: "15px"
+        },
+
         privacyPolicyAndTermsAndConditions: {
             fontSize: palette.fonts.size[1],
             lineHeight: "1.5",
