@@ -7,7 +7,7 @@
     "react-dom": "^16.14.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
-    "supertokens-auth-react": "https://github.com/supertokens/supertokens-auth-react#0.2-validate-on-blur",
+    "supertokens-auth-react": "https://github.com/supertokens/supertokens-auth-react#0.2",
     "supertokens-auth-react-themes": "file:../../"
   },
   "scripts": {

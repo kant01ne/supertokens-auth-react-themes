@@ -55,9 +55,7 @@ export default function Page({ form, header, logo, backgroundUrl }: PageProps): 
                                     {header}
                                     {logo !== undefined && (
                                         <a href="/" className="pageLogo" css={styles.pageLogo}>
-                                            {!logo.endsWith(".svg") && (
-                                                <img className="pageLogoImg" css={styles.pageLogoImg} src={logo} />
-                                            )}
+                                            <img className="pageLogoImg" css={styles.pageLogoImg} src={logo} />
                                         </a>
                                     )}
                                 </div>

@@ -20,7 +20,7 @@ import * as React from "react";
 import { StyleProvider } from "supertokens-auth-react/lib/build/recipe/emailpassword/components/styles/styleContext";
 import BaseTheme from "../baseTheme";
 import Page from "../page";
-import { defaultPalette, getDefaultStyles } from "../styles/styles";
+import { themePalette, getThemeStyles } from "../styles/styles";
 import { ResetPasswordUsingTokenThemeProps } from "../types";
 
 import EnterEmail from "./enterEmail";
@@ -39,8 +39,8 @@ function ResetPasswordUsingTokenTheme(props: ResetPasswordUsingTokenThemeProps):
     if (props.hasToken) {
         return (
             <StyleProvider
-                defaultPalette={defaultPalette}
-                getDefaultStyles={getDefaultStyles}
+                defaultPalette={themePalette}
+                getDefaultStyles={getThemeStyles}
                 styleFromInit={props.enterEmailForm.styleFromInit}>
                 <Page form={<SubmitNewPassword {...props.submitNewPasswordForm} />} logo={props.logo} />
             </StyleProvider>
@@ -50,8 +50,8 @@ function ResetPasswordUsingTokenTheme(props: ResetPasswordUsingTokenThemeProps):
     // Otherwise, return EnterEmail.
     return (
         <StyleProvider
-            defaultPalette={defaultPalette}
-            getDefaultStyles={getDefaultStyles}
+            defaultPalette={themePalette}
+            getDefaultStyles={getThemeStyles}
             styleFromInit={props.enterEmailForm.styleFromInit}>
             <Page form={<EnterEmail {...props.enterEmailForm} />} logo={props.logo} />
         </StyleProvider>
@@ -60,7 +60,7 @@ function ResetPasswordUsingTokenTheme(props: ResetPasswordUsingTokenThemeProps):
 
 function ResetPasswordUsingTokenThemeWrapper(props: ResetPasswordUsingTokenThemeProps): JSX.Element {
     return (
-        <StyleProvider defaultPalette={defaultPalette} getDefaultStyles={getDefaultStyles}>
+        <StyleProvider defaultPalette={themePalette} getDefaultStyles={getThemeStyles}>
             <BaseTheme>
                 <ResetPasswordUsingTokenTheme {...props} />
             </BaseTheme>

@@ -1,10 +1,3 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.supported_fdi = exports.package_version = void 0;
-
 /* Copyright (c) 2020, VRAI Labs and/or its affiliates. All rights reserved.
  *
  * This software is licensed under the Apache License, Version 2.0 (the
@@ -19,7 +12,22 @@ exports.supported_fdi = exports.package_version = void 0;
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-var package_version = "0.2.0";
-exports.package_version = package_version;
-var supported_fdi = ["1.4"];
-exports.supported_fdi = supported_fdi;
+/*
+ * Imports.
+ */
+import { NormalisedDefaultStyles } from "supertokens-auth-react/lib/build/recipe/emailpassword/components/themes/default/types";
+
+export function getMergedStyles(
+    defaultStyles: NormalisedDefaultStyles,
+    themeStyles: NormalisedDefaultStyles
+): NormalisedDefaultStyles {
+    const styles = defaultStyles;
+    for (const key in themeStyles) {
+        styles[key] = {
+            ...styles[key],
+            ...themeStyles[key]
+        };
+    }
+
+    return styles;
+}

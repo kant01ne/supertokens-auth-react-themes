@@ -17,13 +17,15 @@
  * Palette
  */
 /** @jsx jsx */
-import { jsx, keyframes } from "@emotion/core";
+import { jsx } from "@emotion/core";
 import {
     NormalisedDefaultStyles,
     NormalisedPalette
 } from "supertokens-auth-react/lib/build/recipe/emailpassword/components/themes/default/types";
+import { getDefaultStyles } from "supertokens-auth-react/lib/build/recipe/emailpassword/components/themes/default/styles/styles";
+import { getMergedStyles } from "../../common/helpers";
 
-export const defaultPalette: NormalisedPalette = {
+export const themePalette: NormalisedPalette = {
     colors: {
         background: "white",
         inputBackground: "#fff",
@@ -41,52 +43,12 @@ export const defaultPalette: NormalisedPalette = {
 };
 
 /*
- * Default styles.
+ * Theme styles.
  */
-const slideTop = keyframes`
-    0% {
-        transform: translateY(-5px);
-    }
-    100% {
-        transform: translateY(0px);
-    }
-`;
 
-const swingIn = keyframes`
-0% {
-    -webkit-transform: rotateX(-100deg);
-            transform: rotateX(-100deg);
-    -webkit-transform-origin: top;
-            transform-origin: top;
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: rotateX(0deg);
-            transform: rotateX(0deg);
-    -webkit-transform-origin: top;
-            transform-origin: top;
-    opacity: 1;
-  }
-}
-@keyframes swing-in-top-fwd {
-  0% {
-    -webkit-transform: rotateX(-100deg);
-            transform: rotateX(-100deg);
-    -webkit-transform-origin: top;
-            transform-origin: top;
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: rotateX(0deg);
-            transform: rotateX(0deg);
-    -webkit-transform-origin: top;
-            transform-origin: top;
-    opacity: 1;
-  }
-`;
-
-export function getDefaultStyles(palette: NormalisedPalette): NormalisedDefaultStyles {
-    return {
+export function getThemeStyles(palette: NormalisedPalette): NormalisedDefaultStyles {
+    const defaultStyles = getDefaultStyles(palette);
+    const themeStyles = {
         page: {
             lineHeight: 1,
             paddingTop: "5rem",
@@ -112,7 +74,11 @@ export function getDefaultStyles(palette: NormalisedPalette): NormalisedDefaultS
             right: "3.5rem",
             top: "2.5rem",
             color: "#9c9c9c",
-            textDecoration: "none"
+            textDecoration: "none",
+            "@media (max-width: 360px)": {
+                left: "1rem",
+                right: "1rem"
+            }
         },
         pageTogglePrimary: {
             color: "#fff"
@@ -120,6 +86,7 @@ export function getDefaultStyles(palette: NormalisedPalette): NormalisedDefaultS
         pageTestimonialAndForm: {
             marginLeft: "10px",
             marginRight: "10px",
+            marginBottom: "10px",
             display: "flex",
             background: "#fff",
             maxWidth: "50rem",
@@ -127,8 +94,11 @@ export function getDefaultStyles(palette: NormalisedPalette): NormalisedDefaultS
             alignItems: "stretch",
             boxShadow: "0 0 40px rgba(0,0,0,.3)",
             color: "#494854",
-            marginBottom: "2rem",
             margin: "0 auto",
+            "@media (max-width: 800px)": {
+                margin: "26px auto",
+                minWidth: "50%"
+            },
             "@media (max-width: 440px)": {
                 margin: "12px auto",
                 minWidth: "90%"
@@ -140,10 +110,11 @@ export function getDefaultStyles(palette: NormalisedPalette): NormalisedDefaultS
             flexGrow: 0,
             width: "50%",
             margin: 0,
-            "@media (max-width: 440px)": {
+            "@media (max-width: 800px)": {
                 width: "100%"
             }
         },
+
         pageTestimonial: {
             background: "#f2f2f4",
             flexShrink: 0,
@@ -154,7 +125,7 @@ export function getDefaultStyles(palette: NormalisedPalette): NormalisedDefaultS
             width: "40%",
             borderRadius: "5px 0 0 5px",
             padding: "2rem",
-            "@media (max-width: 440px)": {
+            "@media (max-width: 800px)": {
                 display: "none"
             }
         },
@@ -180,7 +151,6 @@ export function getDefaultStyles(palette: NormalisedPalette): NormalisedDefaultS
             flexShrink: 0,
             marginRight: "1rem"
         },
-        pageTestimonialNameAndTitle: {},
         pageTestimonialName: {
             marginBottom: ".5rem"
         },
@@ -203,11 +173,7 @@ export function getDefaultStyles(palette: NormalisedPalette): NormalisedDefaultS
             opacity: "0.8",
             lineHeight: 1.5
         },
-        headerTitle: {
-            fontSize: palette.fonts.size[5],
-            fontWeight: 300,
-            marginBottom: "1.25rem"
-        },
+
         headerToggle: {
             fontSize: palette.fonts.size[5],
             fontWeight: 300,
@@ -217,150 +183,111 @@ export function getDefaultStyles(palette: NormalisedPalette): NormalisedDefaultS
             cursor: "pointer",
             color: "#fff"
         },
+
         row: {
-            margin: "0 auto",
             width: "80%",
-            paddingTop: "25px",
-            paddingBottom: "20px"
-        },
-
-        generalError: {
-            backgroundColor: palette.colors.generalErrorBackground,
-            paddingTop: "10px",
-            paddingBottom: "10px",
-            paddingLeft: "18px",
-            paddingRight: "18px",
-            letterSpacing: "0.2px",
-            fontSize: palette.fonts.size[1],
-            borderRadius: "12px",
-            color: palette.colors.error,
-            animation: `${swingIn} 1s cubic-bezier(0.175, 0.885, 0.320, 1.275) both`
-        },
-
-        inputErrorSymbol: {
-            marginRight: "5px",
-            top: "1px",
-            position: "relative",
-            left: "2px"
-        },
-
-        inputWrapper: {
-            float: "left",
-            width: "100%"
-        },
-
-        inputError: {
-            border: `1px solid ${palette.colors.error}`
+            paddingTop: "45px",
+            paddingBottom: "0px"
         },
 
         input: {
             fontSize: palette.fonts.size[3],
-            width: "94%",
-            backgroundColor: palette.colors.inputBackground,
             borderRadius: "4px",
             border: "1px solid #d8d8db",
             padding: ".4rem .5rem",
             lineHeight: "normal",
-            letterSpacing: "1.2px",
-            "&:focus": {
-                border: `1px solid ${palette.colors.primary}`,
-                outline: "none"
-            },
-            height: "20px",
-            backgroundPosition: "90% 50% !important", // Password manager backgrounds.
-            "@media (max-width: 800px)": {
-                backgroundPosition: "87% 50% !important"
-            },
-            "@media (max-width: 440px)": {
-                backgroundPosition: "84% 50% !important"
-            }
+            height: "20px"
         },
 
         inputErrorMessage: {
-            paddingTop: "10px",
-            color: palette.colors.error,
-            lineHeight: "24px",
-            fontWeight: 400,
-            textAlign: "left",
-            animation: `${slideTop} 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both`
+            fontSize: palette.fonts.size[2]
+        },
+
+        formRow: {
+            paddingBottom: "36px"
         },
 
         button: {
-            marginTop: "15px",
             fontWeight: 800,
             textTransform: "uppercase",
             letterSpacing: ".08rem",
-            width: "100%",
-            color: "#fff",
             borderRadius: "4px",
             padding: ".7rem 1.4rem",
             border: "none",
             fontSize: palette.fonts.size[2],
-            height: "42px",
-            backgroundColor: palette.colors.primary,
-            borderWidth: "0px",
-            "&:disabled": {
-                cursor: "no-drop"
-            },
-            "&:active": {
-                outline: "none",
-                border: "none"
-            },
-            "&:hover": {
-                opacity: ".8"
-            },
-            cursor: "pointer"
+            height: "38px"
         },
 
         label: {
-            textAlign: "left",
             lineHeight: "24px",
             color: palette.colors.textLabel,
             fontWeight: 800,
             textTransform: "uppercase",
             letterSpacing: ".08rem",
-            fontSize: palette.fonts.size[1],
             marginBottom: ".5rem",
+            paddingBottom: "0px",
             display: "block"
         },
 
-        formRow: {
-            display: "flex",
-            flexDirection: "column",
-            paddingTop: "10px",
-            paddingBottom: "5px"
+        headerTitle: {
+            lineHeight: "40px",
+            letterSpacing: "0.58px",
+            color: palette.colors.textTitle,
+            fontSize: palette.fonts.size[5],
+            fontWeight: 300,
+            marginBottom: "1.25rem"
         },
 
-        primaryText: {
+        mainTitle: {
+            lineHeight: "40px",
+            letterSpacing: "0.58px",
+            color: "#fff",
+            fontSize: palette.fonts.size[5],
+            fontWeight: 300,
+            marginBottom: "1.25rem"
+        },
+
+        headerSubTitle: {
+            marginTop: "9px",
+            marginBottom: "21px"
+        },
+
+        forgotPasswordLink: {
+            marginTop: "10px"
+        },
+
+        successMessageSubmitNewPassword: {
+            marginTop: "15px",
+            marginBottom: "15px"
+        },
+
+        successMessageEnterEmail: {
+            marginTop: "15px"
+        },
+
+        privacyPolicyAndTermsAndConditions: {
             fontSize: palette.fonts.size[1],
-            fontWeight: 400,
-            letterSpacing: "0.4px",
-            color: palette.colors.textLabel
+            lineHeight: "1.5",
+            display: "block",
+            alignItems: "start",
+            marginTop: "10px"
+        },
+
+        container: {
+            width: "100%",
+            margin: "inherit",
+            border: "inherit",
+            boxShadow: "inherit",
+            minWidth: "inherit",
+            maxWidth: "inherit",
+            fontFamily:
+                "brown,-apple-system,BlinkMacSystemFont,avenir,lucida grande,gill sans,helvetica neue,helvetica,sans-serif"
         },
 
         secondaryText: {
-            fontSize: palette.fonts.size[1],
-            fontWeight: 300,
-            letterSpacing: "0.4px",
-            color: palette.colors.textPrimary
-        },
-
-        link: {
-            paddingLeft: "3px",
-            paddingRight: "3px",
-            color: palette.colors.textLink,
-            cursor: "pointer",
-            letterSpacing: "0.16px",
-            lineHeight: "26px",
-            textDecoration: "none"
-        },
-
-        divider: {
-            marginTop: "1em",
-            marginBottom: "1em",
-            borderBottom: "0.3px solid #dddddd",
-            display: "flex",
-            alignItems: "center"
+            marginBottom: "10px"
         }
-    };
+    } as NormalisedDefaultStyles;
+
+    return getMergedStyles(defaultStyles, themeStyles);
 }

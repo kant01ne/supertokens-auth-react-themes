@@ -19,9 +19,9 @@
 
 /** @jsx jsx */
 import { CSSObject, jsx } from "@emotion/core";
-import * as React from "react";
+import React, { useContext } from "react";
 import { Styles } from "supertokens-auth-react/lib/build/types";
-import { StyleConsumer } from "supertokens-auth-react/lib/build/recipe/emailpassword/components/styles/styleContext";
+import StyleProvider from "supertokens-auth-react/lib/build/recipe/emailpassword/components/styles/styleContext";
 import { Testimonial } from "./types";
 
 /*
@@ -85,67 +85,62 @@ function getComponentStyle({ testimonial }: { testimonial?: Testimonial }): Styl
  */
 
 export default function Page({ form, header, toggle, testimonial, logo }: PageProps): JSX.Element {
+    const styles = useContext(StyleProvider);
     const componentStyle = getComponentStyle({ testimonial });
     return (
-        <StyleConsumer>
-            {styles => (
-                <div>
-                    <div>
-                        {toggle !== undefined && (
-                            <div className="pageToggle" css={styles.pageToggle}>
-                                {toggle}
-                            </div>
-                        )}
-                        {logo !== undefined && (
-                            <a href="/" className="pageLogo" css={[componentStyle.pageLogo, styles.pageLogo]}>
-                                <img
-                                    className="pageLogoImg"
-                                    css={[componentStyle.pageLogoImg, styles.pageLogoImg]}
-                                    src={logo}
-                                />
-                            </a>
-                        )}
+        <div>
+            <div>
+                {toggle !== undefined && (
+                    <div className="pageToggle" css={styles.pageToggle}>
+                        {toggle}
                     </div>
-                    <div className="page" css={styles.page}>
-                        {header !== undefined && (
-                            <div className="pageHeader" css={styles.pageHeader}>
-                                {header}
+                )}
+                {logo !== undefined && (
+                    <a href="/" className="pageLogo" css={[componentStyle.pageLogo, styles.pageLogo]}>
+                        <img
+                            className="pageLogoImg"
+                            css={[componentStyle.pageLogoImg, styles.pageLogoImg]}
+                            src={logo}
+                        />
+                    </a>
+                )}
+            </div>
+            <div className="page" css={styles.page}>
+                {header !== undefined && (
+                    <div className="pageHeader" css={styles.pageHeader}>
+                        {header}
+                    </div>
+                )}
+                <div className="pageTestimonialAndForm" css={styles.pageTestimonialAndForm}>
+                    {testimonial && (
+                        <div className="pageTestimonial" css={styles.pageTestimonial}>
+                            <div className="pageTestimonialQuote" css={styles.pageTestimonialQuote}>
+                                “{testimonial.quote}”
                             </div>
-                        )}
-                        <div className="pageTestimonialAndForm" css={styles.pageTestimonialAndForm}>
-                            {testimonial && (
-                                <div className="pageTestimonial" css={styles.pageTestimonial}>
-                                    <div className="pageTestimonialQuote" css={styles.pageTestimonialQuote}>
-                                        “{testimonial.quote}”
-                                    </div>
 
-                                    <div className="pageTestimonialAttribution" css={styles.pageTestimonialAttribution}>
-                                        <img
-                                            className="pageTestimonialPhoto"
-                                            css={styles.pageTestimonialPhoto}
-                                            src={testimonial.picture}
-                                        />
-                                        <div
-                                            className="pageTestimonialNameAndTitle"
-                                            css={styles.pageTestimonialNameAndTitle}>
-                                            <div className="pageTestimonialName" css={styles.pageTestimonialName}>
-                                                {testimonial.name}
-                                            </div>
-                                            <div className="pageTestimonialTitle" css={styles.pageTestimonialTitle}>
-                                                {testimonial.title},<br />
-                                                {testimonial.company}
-                                            </div>
-                                        </div>
+                            <div className="pageTestimonialAttribution" css={styles.pageTestimonialAttribution}>
+                                <img
+                                    className="pageTestimonialPhoto"
+                                    css={styles.pageTestimonialPhoto}
+                                    src={testimonial.picture}
+                                />
+                                <div className="pageTestimonialNameAndTitle" css={styles.pageTestimonialNameAndTitle}>
+                                    <div className="pageTestimonialName" css={styles.pageTestimonialName}>
+                                        {testimonial.name}
+                                    </div>
+                                    <div className="pageTestimonialTitle" css={styles.pageTestimonialTitle}>
+                                        {testimonial.title},<br />
+                                        {testimonial.company}
                                     </div>
                                 </div>
-                            )}
-                            <div className="pageForm" css={[styles.pageForm, componentStyle.pageForm]}>
-                                {form}
                             </div>
                         </div>
+                    )}
+                    <div className="pageForm" css={[styles.pageForm, componentStyle.pageForm]}>
+                        {form}
                     </div>
                 </div>
-            )}
-        </StyleConsumer>
+            </div>
+        </div>
     );
 }

@@ -19,46 +19,19 @@
 import * as React from "react";
 import { PureComponent, createRef } from "react";
 import { SignInThemeProps, FormFieldState } from "supertokens-auth-react/lib/build/recipe/emailpassword/types";
-import { CSSObject } from "@emotion/serialize/types";
 
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
 
 import FormBase from "supertokens-auth-react/lib/build/recipe/emailpassword/components/library/FormBase";
-import { Styles } from "supertokens-auth-react/lib/build/types";
-import { StyleConsumer } from "supertokens-auth-react/lib/build/recipe/emailpassword/components/styles/styleContext";
-import { NormalisedPalette } from "supertokens-auth-react/lib/build/recipe/emailpassword/components/themes/default/types";
-
-/*
- * Styles.
- */
-
-function getStyles(palette: NormalisedPalette): Styles {
-    return {
-        headerTitle: {
-            fontSize: palette.fonts.size[2],
-            lineHeight: "40px",
-            letterSpacing: "0.58px",
-            fontWeight: 800,
-            color: palette.colors.textTitle
-        } as CSSObject,
-
-        headerSubTitle: {
-            marginTop: "9px",
-            marginBottom: "21px"
-        } as CSSObject,
-
-        forgotPasswordLink: {
-            marginTop: "10px"
-        } as CSSObject
-    };
-}
+import StyleContext from "supertokens-auth-react/lib/build/recipe/emailpassword/components/styles/styleContext";
 
 /*
  * Component.
  */
 
 export default class SignInTheme extends PureComponent<SignInThemeProps, { formFields: FormFieldState[] }> {
+    static contextType = StyleContext;
     /*
      * Constructor.
      */
@@ -83,37 +56,26 @@ export default class SignInTheme extends PureComponent<SignInThemeProps, { formF
      */
 
     render(): JSX.Element {
+        const styles = this.context;
         const { forgotPasswordClick, onSuccess, callAPI } = this.props;
         const { formFields } = this.state;
 
         return (
-            <StyleConsumer>
-                {styles => {
-                    const componentStyle = getStyles(styles.palette as NormalisedPalette);
-                    return (
-                        <FormBase
-                            formFields={formFields}
-                            buttonLabel={"SIGN IN"}
-                            onSuccess={onSuccess}
-                            callAPI={callAPI}
-                            showLabels={true}
-                            footer={
-                                <div
-                                    className="link secondaryText forgotPasswordLink"
-                                    css={[
-                                        styles.link,
-                                        styles.secondaryText,
-                                        componentStyle.forgotPasswordLink,
-                                        styles.forgotPasswordLink
-                                    ]}
-                                    onClick={forgotPasswordClick}>
-                                    Forgot password?
-                                </div>
-                            }
-                        />
-                    );
-                }}
-            </StyleConsumer>
+            <FormBase
+                formFields={formFields}
+                buttonLabel={"SIGN IN"}
+                onSuccess={onSuccess}
+                callAPI={callAPI}
+                showLabels={true}
+                footer={
+                    <div
+                        className="link secondaryText forgotPasswordLink"
+                        css={[styles.link, styles.secondaryText, styles.forgotPasswordLink]}
+                        onClick={forgotPasswordClick}>
+                        Forgot password?
+                    </div>
+                }
+            />
         );
     }
 }

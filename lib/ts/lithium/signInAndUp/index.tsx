@@ -29,7 +29,7 @@ import {
     StyleProvider
 } from "supertokens-auth-react/lib/build/recipe/emailpassword/components/styles/styleContext";
 import BaseTheme from "../baseTheme";
-import { defaultPalette, getDefaultStyles } from "../styles/styles";
+import { themePalette, getThemeStyles } from "../styles/styles";
 
 /*
  * Component.
@@ -40,18 +40,18 @@ function SignInAndUpTheme(props: SignInAndUpThemeProps): JSX.Element {
      * State.
      */
 
-    const [isSignIn, setSignIn] = useState(true);
+    const [isSignUp, setSignUp] = useState(props.defaultToSignUp);
 
     /*
      * Render.
      */
 
-    // If isSignIn, return signIn.
-    if (isSignIn) {
+    // If not isSignUp, return Sign In.
+    if (isSignUp === false) {
         return (
             <StyleProvider
-                defaultPalette={defaultPalette}
-                getDefaultStyles={getDefaultStyles}
+                defaultPalette={themePalette}
+                getDefaultStyles={getThemeStyles}
                 styleFromInit={props.signInForm.styleFromInit}>
                 <StyleConsumer>
                     {styles => (
@@ -63,7 +63,7 @@ function SignInAndUpTheme(props: SignInAndUpThemeProps): JSX.Element {
                                     <span
                                         className="headerTogglePrimary"
                                         css={styles.headerTogglePrimary}
-                                        onClick={() => setSignIn(false)}>
+                                        onClick={() => setSignUp(true)}>
                                         Sign up
                                     </span>
                                 </Fragment>
@@ -79,8 +79,8 @@ function SignInAndUpTheme(props: SignInAndUpThemeProps): JSX.Element {
     // Otherwise, return SignUp.
     return (
         <StyleProvider
-            defaultPalette={defaultPalette}
-            getDefaultStyles={getDefaultStyles}
+            defaultPalette={themePalette}
+            getDefaultStyles={getThemeStyles}
             styleFromInit={props.signUpForm.styleFromInit}>
             <StyleConsumer>
                 {styles => (
@@ -90,7 +90,7 @@ function SignInAndUpTheme(props: SignInAndUpThemeProps): JSX.Element {
                         header={
                             <Fragment>
                                 <div className="headerTogglePrimary" css={styles.headerTogglePrimary}>
-                                    <span onClick={() => setSignIn(true)}>Sign in</span>
+                                    <span onClick={() => setSignUp(false)}>Sign in</span>
                                 </div>
                             </Fragment>
                         }
@@ -104,7 +104,7 @@ function SignInAndUpTheme(props: SignInAndUpThemeProps): JSX.Element {
 
 function SignInAndUpThemeWrapper(props: SignInAndUpThemeProps): JSX.Element {
     return (
-        <StyleProvider defaultPalette={defaultPalette} getDefaultStyles={getDefaultStyles}>
+        <StyleProvider defaultPalette={themePalette} getDefaultStyles={getThemeStyles}>
             <BaseTheme>
                 <SignInAndUpTheme {...props} />
             </BaseTheme>

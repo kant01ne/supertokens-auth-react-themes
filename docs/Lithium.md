@@ -67,7 +67,7 @@ function App() {
 
 ### SVG Backgrounds
 
-Illustrations background generated using the awesome [BGJar](https://bgjar.com/)
+Illustrations background generated using the awesome [Undraw project](https://undraw.co//)
 
 ## Documentation
 To see documentation, please click [here](https://supertokens.io/docs/auth-react/installation).

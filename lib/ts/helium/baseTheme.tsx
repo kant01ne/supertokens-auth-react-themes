@@ -17,47 +17,24 @@
  * Imports.
  */
 
-import * as React from "react";
+import React, { useContext } from "react";
 /** @jsx jsx */
-import { CSSObject, jsx } from "@emotion/core";
-import { StyleConsumer } from "supertokens-auth-react/lib/build/recipe/emailpassword/components/styles/styleContext";
-
-/*
- * Styles.
- */
-export function getStyles(backgroundColor: string): CSSObject {
-    return {
-        fontFamily:
-            "Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;",
-        background: backgroundColor,
-        backgroundSize: "cover",
-        position: "relative",
-        width: "100vw",
-        justifyContent: "center",
-        display: "flex",
-        flexDirection: "column"
-    };
-}
+import { jsx } from "@emotion/core";
+import StyleContext from "supertokens-auth-react/lib/build/recipe/emailpassword/components/styles/styleContext";
 
 /*
  * Component.
  */
 
 export default function BaseTheme({ children }: { children: JSX.Element }): JSX.Element {
+    const styles = useContext(StyleContext);
     return (
-        <StyleConsumer>
-            {styles => {
-                const rootStyles = getStyles(styles.palette.colors.background);
-                return (
-                    <div css={rootStyles}>
-                        {children}
-                        <link
-                            href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap"
-                            rel="stylesheet"
-                            type="text/css"></link>
-                    </div>
-                );
-            }}
-        </StyleConsumer>
+        <div css={styles.root}>
+            {children}
+            <link
+                href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap"
+                rel="stylesheet"
+                type="text/css"></link>
+        </div>
     );
 }

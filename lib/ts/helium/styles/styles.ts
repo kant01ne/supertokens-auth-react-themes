@@ -17,13 +17,15 @@
  * Palette
  */
 /** @jsx jsx */
-import { jsx, keyframes } from "@emotion/core";
+import { jsx } from "@emotion/core";
 import {
     NormalisedPalette,
     NormalisedDefaultStyles
 } from "supertokens-auth-react/lib/build/recipe/emailpassword/components/themes/default/types";
+import { getDefaultStyles } from "supertokens-auth-react/lib/build/recipe/emailpassword/components/themes/default/styles/styles";
+import { getMergedStyles } from "../../common/helpers";
 
-export const defaultPalette: NormalisedPalette = {
+export const themePalette: NormalisedPalette = {
     colors: {
         background: "#1a1925",
         inputBackground: "rgba(0, 0, 0, 0.10)",
@@ -40,53 +42,20 @@ export const defaultPalette: NormalisedPalette = {
     }
 };
 
-/*
- * Default styles.
- */
-const slideTop = keyframes`
-    0% {
-        transform: translateY(-5px);
-    }
-    100% {
-        transform: translateY(0px);
-    }
-`;
-
-const swingIn = keyframes`
-0% {
-    -webkit-transform: rotateX(-100deg);
-            transform: rotateX(-100deg);
-    -webkit-transform-origin: top;
-            transform-origin: top;
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: rotateX(0deg);
-            transform: rotateX(0deg);
-    -webkit-transform-origin: top;
-            transform-origin: top;
-    opacity: 1;
-  }
-}
-@keyframes swing-in-top-fwd {
-  0% {
-    -webkit-transform: rotateX(-100deg);
-            transform: rotateX(-100deg);
-    -webkit-transform-origin: top;
-            transform-origin: top;
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: rotateX(0deg);
-            transform: rotateX(0deg);
-    -webkit-transform-origin: top;
-            transform-origin: top;
-    opacity: 1;
-  }
-`;
-
-export function getDefaultStyles(palette: NormalisedPalette): NormalisedDefaultStyles {
-    return {
+export function getThemeStyles(palette: NormalisedPalette): NormalisedDefaultStyles {
+    const defaultStyles = getDefaultStyles(palette);
+    const themeStyles = {
+        root: {
+            fontFamily:
+                "Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;",
+            background: palette.colors.background,
+            backgroundSize: "cover",
+            position: "relative",
+            width: "100vw",
+            justifyContent: "center",
+            display: "flex",
+            flexDirection: "column"
+        },
         page: {
             lineHeight: 1,
             paddingTop: "5rem",
@@ -108,6 +77,26 @@ export function getDefaultStyles(palette: NormalisedPalette): NormalisedDefaultS
                 marginTop: "7rem"
             }
         },
+        pageLogo: {
+            width: "2rem",
+            height: "2rem",
+            "@media (max-width: 440px)": {
+                top: "5.5rem",
+                margin: "0 auto",
+                width: "100%"
+            },
+            display: "block",
+            position: "absolute",
+            "@media (min-width: 440px)": {
+                top: "2.5rem",
+                left: "3.5rem"
+            }
+        },
+        pageLogoImg: {
+            maxHeight: "80px",
+            maxWidth: "200px"
+        },
+
         pageToggle: {
             position: "absolute",
             right: "3.5rem",
@@ -135,71 +124,71 @@ export function getDefaultStyles(palette: NormalisedPalette): NormalisedDefaultS
             }
         },
         container: {
-            textAlign: "center",
-            minWidth: "440px",
-            "@media (max-width: 440px)": {
-                margin: "12px",
-                minWidth: "320px"
-            },
-            "@media (max-width: 340px)": {
-                minWidth: "260px"
-            },
-            "@media (max-width: 300px)": {
-                minWidth: "220px"
-            }
+            width: "100%",
+            margin: "inherit",
+            border: "inherit",
+            boxShadow: "inherit",
+            maxWidth: "inherit",
+            fontFamily:
+                "Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;",
+            textAlign: "center"
         },
+
+        headerSubTitle: {
+            marginTop: "9px",
+            marginBottom: "21px"
+        },
+
+        successMessageEnterEmail: {
+            marginBottom: "15px"
+        },
+
+        forgotPasswordLink: {
+            marginTop: "10px"
+        },
+
+        successMessageSubmitNewPassword: {
+            marginTop: "15px",
+            marginBottom: "15px"
+        },
+
         header: {
             display: "flex",
             flexDirection: "column",
             textAlign: "center"
         },
+
         headerSubtitle: {
             fontSize: palette.fonts.size[2],
             opacity: "0.8",
             lineHeight: 1.5
         },
+
         headerTitle: {
             fontSize: "2rem",
             fontWeight: 800,
             marginBottom: "1.25rem",
             color: palette.colors.textTitle
         },
+
         headerToggle: {
             fontSize: palette.fonts.size[5],
             fontWeight: 300,
             marginBottom: "1.25rem"
         },
+
         headerTogglePrimary: {
             cursor: "pointer",
             color: "#fff"
         },
+
         row: {
-            margin: "0 auto",
             width: "80%",
-            paddingTop: "25px",
-            paddingBottom: "20px"
+            paddingTop: "25px"
         },
 
         generalError: {
-            backgroundColor: palette.colors.generalErrorBackground,
-            paddingTop: "10px",
-            paddingBottom: "10px",
-            paddingLeft: "18px",
-            paddingRight: "18px",
-            letterSpacing: "0.2px",
-            fontSize: palette.fonts.size[1],
-            borderRadius: "12px",
-            color: palette.colors.error,
-            animation: `${swingIn} 1s cubic-bezier(0.175, 0.885, 0.320, 1.275) both`
-        },
-
-        inputWrapper: {
-            float: "left",
-            width: "100%"
-        },
-
-        inputError: {
-            border: `1px solid ${palette.colors.error}`
+            fontSize: palette.fonts.size[1]
         },
 
         input: {
@@ -213,32 +202,19 @@ export function getDefaultStyles(palette: NormalisedPalette): NormalisedDefaultS
             textAlign: "center",
             transition: "border 200ms ease 0ms,box-shadow 200ms ease 0ms",
             borderRadius: "5px",
-            marginBottom: "1rem",
             width: "90%",
-            backgroundColor: palette.colors.inputBackground,
             lineHeight: "normal",
-            letterSpacing: "1.2px",
-            "&:focus": {
-                border: `1px solid ${palette.colors.primary}`,
-                outline: "none"
-            },
             height: "25px"
         },
 
-        inputErrorMessage: {
-            color: palette.colors.error,
-            lineHeight: "24px",
-            fontWeight: 400,
-            fontSize: "14px",
-            textAlign: "left",
-            animation: `${slideTop} 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both`
+        inputError: {
+            width: "90%"
         },
 
-        inputErrorSymbol: {
-            marginRight: "5px",
-            top: "1px",
-            position: "relative",
-            left: "2px"
+        inputErrorMessage: {
+            width: "90%",
+            fontSize: "14px",
+            textAlign: "center"
         },
 
         button: {
@@ -246,78 +222,24 @@ export function getDefaultStyles(palette: NormalisedPalette): NormalisedDefaultS
             fontWeight: 800,
             textTransform: "uppercase",
             letterSpacing: ".08rem",
-            width: "100%",
-            color: "#fff",
             borderRadius: "4px",
             padding: ".7rem 1.4rem",
             border: "none",
-            fontSize: palette.fonts.size[2],
-            height: "42px",
-            backgroundColor: palette.colors.primary,
-            borderWidth: "0px",
-            "&:disabled": {
-                cursor: "no-drop",
-                opacity: ".7"
-            },
-            "&:active": {
-                outline: "none",
-                border: "none"
-            },
-            "&:hover": {
-                opacity: ".8"
-            },
-            cursor: "pointer"
-        },
-
-        label: {
-            textAlign: "left",
-            lineHeight: "24px",
-            color: palette.colors.textLabel,
-            fontWeight: 800,
-            textTransform: "uppercase",
-            letterSpacing: ".08rem",
-            fontSize: palette.fonts.size[1],
-            marginBottom: ".5rem",
-            display: "block"
+            fontSize: palette.fonts.size[2]
         },
 
         formRow: {
-            display: "flex",
-            flexDirection: "column",
-            paddingTop: "10px",
-            paddingBottom: "5px"
+            paddingBottom: "35px"
         },
 
-        primaryText: {
+        privacyPolicyAndTermsAndConditions: {
             fontSize: palette.fonts.size[1],
-            fontWeight: 400,
-            letterSpacing: "0.4px",
-            color: palette.colors.textLabel
-        },
-
-        secondaryText: {
-            fontSize: palette.fonts.size[1],
-            fontWeight: 300,
-            letterSpacing: "0.4px",
-            color: palette.colors.textPrimary
-        },
-
-        link: {
-            paddingLeft: "3px",
-            paddingRight: "3px",
-            color: palette.colors.textLink,
-            cursor: "pointer",
-            letterSpacing: "0.16px",
-            lineHeight: "26px",
-            textDecoration: "none"
-        },
-
-        divider: {
-            marginTop: "1em",
-            marginBottom: "1em",
-            borderBottom: "0.3px solid #dddddd",
-            display: "flex",
-            alignItems: "center"
+            lineHeight: "1.5",
+            display: "block",
+            alignItems: "start",
+            marginTop: "15px"
         }
-    };
+    } as NormalisedDefaultStyles;
+
+    return getMergedStyles(defaultStyles, themeStyles);
 }

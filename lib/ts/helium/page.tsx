@@ -18,10 +18,9 @@
  */
 
 /** @jsx jsx */
-import { CSSObject, jsx } from "@emotion/core";
-import * as React from "react";
-import { Styles } from "supertokens-auth-react/lib/build/types";
-import { StyleConsumer } from "supertokens-auth-react/lib/build/recipe/emailpassword/components/styles/styleContext";
+import { jsx } from "@emotion/core";
+import StyleContext from "supertokens-auth-react/lib/build/recipe/emailpassword/components/styles/styleContext";
+import React, { useContext } from "react";
 
 /*
  * Props.
@@ -35,83 +34,35 @@ type PageProps = {
 };
 
 /*
- * Styles.
- */
-function getComponentStyle({ logo }: { logo?: string }): Styles {
-    let logoStyles: Record<string, CSSObject> = {};
-    if (logo !== undefined) {
-        logoStyles = {
-            pageLogo: {
-                width: "2rem",
-                height: "2rem",
-                "@media (max-width: 440px)": {
-                    top: "5.5rem",
-                    margin: "0 auto",
-                    width: "100%"
-                },
-                display: "block",
-                position: "absolute",
-                "@media (min-width: 440px)": {
-                    top: "2.5rem",
-                    left: "3.5rem"
-                }
-            } as CSSObject,
-            pageLogoImg: {
-                maxHeight: "80px",
-                maxWidth: "200px"
-            }
-        };
-        if (logo.endsWith(".svg")) {
-            logoStyles.pageLogo.background = `url(${logo}) no-repeat`;
-            logoStyles.pageLogo.backgroundSize = "contain";
-        }
-    }
-
-    return {
-        ...logoStyles
-    };
-}
-
-/*
  * Component.
  */
 
 export default function Page({ form, header, toggle, logo }: PageProps): JSX.Element {
-    const componentStyle = getComponentStyle({ logo });
+    const styles = useContext(StyleContext);
     return (
-        <StyleConsumer>
-            {styles => (
-                <div>
-                    <div>
-                        {toggle !== undefined && (
-                            <div className="pageToggle" css={styles.pageToggle}>
-                                {toggle}
-                            </div>
-                        )}
-                        {logo !== undefined && (
-                            <a href="/" className="pageLogo" css={[componentStyle.pageLogo, styles.pageLogo]}>
-                                {!logo.endsWith(".svg") && (
-                                    <img
-                                        className="pageLogoImg"
-                                        css={[componentStyle.pageLogoImg, styles.pageLogoImg]}
-                                        src={logo}
-                                    />
-                                )}
-                            </a>
-                        )}
+        <div>
+            <div>
+                {toggle !== undefined && (
+                    <div className="pageToggle" css={styles.pageToggle}>
+                        {toggle}
                     </div>
-                    <div className="page" css={styles.page}>
-                        {header !== undefined && (
-                            <div className="pageHeader" css={styles.pageHeader}>
-                                {header}
-                            </div>
-                        )}
-                        <div className="pageForm" css={[styles.pageForm, componentStyle.pageForm]}>
-                            {form}
-                        </div>
+                )}
+                {logo !== undefined && (
+                    <a href="/" className="pageLogo" css={styles.pageLogo}>
+                        <img className="pageLogoImg" css={styles.pageLogoImg} src={logo} />
+                    </a>
+                )}
+            </div>
+            <div className="page" css={styles.page}>
+                {header !== undefined && (
+                    <div className="pageHeader" css={styles.pageHeader}>
+                        {header}
                     </div>
+                )}
+                <div className="pageForm" css={styles.pageForm}>
+                    {form}
                 </div>
-            )}
-        </StyleConsumer>
+            </div>
+        </div>
     );
 }
