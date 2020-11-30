@@ -17,8 +17,8 @@
  * Imports.
  */
 import * as React from "react";
-import { PureComponent, createRef } from "react";
-import { SignInThemeProps, FormFieldState } from "supertokens-auth-react/lib/build/recipe/emailpassword/types";
+import { PureComponent } from "react";
+import { SignInThemeProps } from "supertokens-auth-react/lib/build/recipe/emailpassword/types";
 
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
@@ -30,35 +30,15 @@ import StyleContext from "supertokens-auth-react/lib/build/recipe/emailpassword/
  * Component.
  */
 
-export default class SignInTheme extends PureComponent<SignInThemeProps, { formFields: FormFieldState[] }> {
+export default class SignInTheme extends PureComponent<SignInThemeProps> {
     static contextType = StyleContext;
-    /*
-     * Constructor.
-     */
-    constructor(props: SignInThemeProps) {
-        super(props);
-
-        const formFields = props.formFields.map(field => {
-            return {
-                ...field,
-                ref: createRef<HTMLInputElement>(),
-                validated: false
-            };
-        });
-
-        this.state = {
-            formFields
-        };
-    }
-
     /*
      * Render.
      */
 
     render(): JSX.Element {
         const styles = this.context;
-        const { forgotPasswordClick, onSuccess, callAPI } = this.props;
-        const { formFields } = this.state;
+        const { forgotPasswordClick, onSuccess, formFields, callAPI } = this.props;
 
         return (
             <FormBase

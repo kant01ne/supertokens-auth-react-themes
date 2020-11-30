@@ -17,7 +17,7 @@
  * Imports.
  */
 import * as React from "react";
-import { PureComponent, createRef, Fragment } from "react";
+import { PureComponent, Fragment } from "react";
 
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
@@ -44,16 +44,8 @@ export default class SubmitNewPasswordTheme extends PureComponent<
     constructor(props: SubmitNewPasswordThemeProps) {
         super(props);
 
-        const formFields = props.formFields.map(field => {
-            return {
-                ...field,
-                ref: createRef<HTMLInputElement>(),
-                validated: false
-            };
-        });
-
         this.state = {
-            formFields
+            hasNewPassword: false
         };
     }
 
@@ -74,8 +66,8 @@ export default class SubmitNewPasswordTheme extends PureComponent<
 
     render(): JSX.Element {
         const styles = this.context;
-        const { callAPI, onSignInClicked } = this.props;
-        const { formFields, hasNewPassword } = this.state;
+        const { callAPI, formFields, onSignInClicked } = this.props;
+        const { hasNewPassword } = this.state;
         if (hasNewPassword === true) {
             return (
                 <div className="container" css={styles.container}>
@@ -109,6 +101,7 @@ export default class SubmitNewPasswordTheme extends PureComponent<
                 formFields={formFields}
                 buttonLabel={"Change password"}
                 onSuccess={this.onSuccess}
+                validateOnBlur={true}
                 callAPI={callAPI}
                 showLabels={false}
                 header={

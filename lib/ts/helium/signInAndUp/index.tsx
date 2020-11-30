@@ -102,7 +102,7 @@ function SignInAndUpTheme(props: SignInAndUpThemeProps): JSX.Element {
                         header={
                             <Fragment>
                                 <span className="headerTitle" css={styles.headerTitle}>
-                                    Get started for free.
+                                    Get started for free
                                 </span>
                                 <span className="headerSubtitle" css={styles.headerSubtitle}>
                                     No credit card required.

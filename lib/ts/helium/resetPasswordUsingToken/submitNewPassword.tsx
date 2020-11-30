@@ -17,7 +17,7 @@
  * Imports.
  */
 import * as React from "react";
-import { PureComponent, createRef, Fragment } from "react";
+import { PureComponent, Fragment } from "react";
 
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
@@ -44,16 +44,8 @@ export default class SubmitNewPasswordTheme extends PureComponent<
     constructor(props: SubmitNewPasswordThemeProps) {
         super(props);
 
-        const formFields = props.formFields.map(field => {
-            return {
-                ...field,
-                ref: createRef<HTMLInputElement>(),
-                validated: false
-            };
-        });
-
         this.state = {
-            formFields
+            hasNewPassword: false
         };
     }
 
@@ -74,15 +66,14 @@ export default class SubmitNewPasswordTheme extends PureComponent<
 
     render(): JSX.Element {
         const styles = this.context;
-        const { callAPI, onSignInClicked } = this.props;
-        const styleFromInit = this.props.styleFromInit !== undefined ? this.props.styleFromInit : {};
-        const { formFields, hasNewPassword } = this.state;
+        const { callAPI, onSignInClicked, formFields } = this.props;
+        const { hasNewPassword } = this.state;
 
         if (hasNewPassword === true) {
             return (
                 <div className="container" css={styles.container}>
                     <div className="row" css={styles.row}>
-                        <div className="headerTitle" css={[styles.headerTitle, styleFromInit.headerTitle]}>
+                        <div className="headerTitle" css={styles.headerTitle}>
                             Success!
                         </div>
                         <FormRow key="form-button">
@@ -114,6 +105,7 @@ export default class SubmitNewPasswordTheme extends PureComponent<
                 onSuccess={this.onSuccess}
                 callAPI={callAPI}
                 showLabels={false}
+                validateOnBlur={true}
                 header={
                     <Fragment>
                         <div className="headerTitle" css={styles.headerTitle}>

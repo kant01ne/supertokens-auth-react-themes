@@ -65,7 +65,7 @@ function SignInAndUpTheme(props: SignInAndUpThemeProps): JSX.Element {
                             header={
                                 <Fragment>
                                     <span className="mainTitle" css={styles.mainTitle}>
-                                        Get started for free.
+                                        Get started for free
                                     </span>
                                     <span className="headerSubtitle" css={styles.headerSubtitle}>
                                         No credit card required.

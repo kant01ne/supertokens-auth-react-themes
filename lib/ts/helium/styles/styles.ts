@@ -83,7 +83,10 @@ export function getThemeStyles(palette: NormalisedPalette): NormalisedDefaultSty
             "@media (max-width: 440px)": {
                 top: "5.5rem",
                 margin: "0 auto",
-                width: "100%"
+                width: "100%",
+                display: "flex",
+                height: "80px",
+                justifyContent: "center"
             },
             display: "block",
             position: "absolute",
@@ -207,12 +210,7 @@ export function getThemeStyles(palette: NormalisedPalette): NormalisedDefaultSty
             height: "25px"
         },
 
-        inputError: {
-            width: "90%"
-        },
-
         inputErrorMessage: {
-            width: "90%",
             fontSize: "14px",
             textAlign: "center"
         },

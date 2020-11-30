@@ -16,7 +16,7 @@
  * Imports.
  */
 import * as React from "react";
-import { PureComponent, createRef, Fragment } from "react";
+import { PureComponent, Fragment } from "react";
 import {
     EnterEmailThemeProps,
     EnterEmailThemeState
@@ -38,17 +38,8 @@ export default class EnterEmailTheme extends PureComponent<EnterEmailThemeProps,
      */
     constructor(props: EnterEmailThemeProps) {
         super(props);
-
-        const formFields = props.formFields.map(field => {
-            return {
-                ...field,
-                ref: createRef<HTMLInputElement>(),
-                validated: false
-            };
-        });
-
         this.state = {
-            formFields
+            emailSent: false
         };
     }
 
@@ -78,8 +69,8 @@ export default class EnterEmailTheme extends PureComponent<EnterEmailThemeProps,
      */
     render(): JSX.Element {
         const styles = this.context;
-        const { callAPI } = this.props;
-        const { formFields, emailSent } = this.state;
+        const { callAPI, formFields } = this.props;
+        const { emailSent } = this.state;
         // If email sent, show success UI.
         if (emailSent === true) {
             return (
@@ -103,6 +94,7 @@ export default class EnterEmailTheme extends PureComponent<EnterEmailThemeProps,
                 buttonLabel={"Email me"}
                 onSuccess={this.onSuccess}
                 callAPI={callAPI}
+                validateOnBlur={true}
                 showLabels={false}
                 header={
                     <Fragment>

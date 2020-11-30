@@ -16,8 +16,8 @@
  * Imports.
  */
 import * as React from "react";
-import { PureComponent, createRef } from "react";
-import { FormFieldState, SignUpThemeProps } from "supertokens-auth-react/lib/build/recipe/emailpassword/types";
+import { PureComponent } from "react";
+import { SignUpThemeProps } from "supertokens-auth-react/lib/build/recipe/emailpassword/types";
 
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
@@ -28,41 +28,12 @@ import FormBase from "supertokens-auth-react/lib/build/recipe/emailpassword/comp
  * Component.
  */
 
-export default class SignUpTheme extends PureComponent<SignUpThemeProps, { formFields: FormFieldState[] }> {
-    /*
-     * Constructor.
-     */
-    constructor(props: SignUpThemeProps) {
-        super(props);
-
-        const emailPasswordOnly = props.formFields.length === 2;
-        const formFields = props.formFields.map(field => {
-            return {
-                ...field,
-                ref: createRef<HTMLInputElement>(),
-                validated: false,
-                showIsRequired: (() => {
-                    // If email and password only, do not show required indicator (*).
-                    if (emailPasswordOnly) {
-                        return false;
-                    }
-                    // Otherwise, show for all non optional fields (including email and password).
-                    return field.optional === false;
-                })()
-            };
-        });
-
-        this.state = {
-            formFields
-        };
-    }
-
+export default class SignUpTheme extends PureComponent<SignUpThemeProps> {
     /*
      * Render.
      */
     render(): JSX.Element {
-        const { privacyPolicyLink, termsOfServiceLink, onSuccess, callAPI } = this.props;
-        const { formFields } = this.state;
+        const { privacyPolicyLink, formFields, termsOfServiceLink, onSuccess, callAPI } = this.props;
 
         return (
             <FormBase
@@ -71,6 +42,7 @@ export default class SignUpTheme extends PureComponent<SignUpThemeProps, { formF
                 onSuccess={onSuccess}
                 callAPI={callAPI}
                 showLabels={false}
+                validateOnBlur={true}
                 footer={
                     <SignUpFooter
                         componentStyles={{}}
