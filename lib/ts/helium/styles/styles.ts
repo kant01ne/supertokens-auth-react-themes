@@ -191,7 +191,9 @@ export function getThemeStyles(palette: NormalisedPalette): NormalisedDefaultSty
         },
 
         generalError: {
-            fontSize: palette.fonts.size[1]
+            marginBottom: "15px",
+            backgroundColor: "rgba(0,0,0,0)",
+            fontSize: palette.fonts.size[3]
         },
 
         input: {

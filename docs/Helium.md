@@ -9,7 +9,7 @@
 import React from 'react';
 
 import SuperTokens from 'supertokens-auth-react';
-import EmailPassword from 'supertokens-auth-react/recipe/emailpassword';
+import EmailPassword, {SignInAndUp, ResetPasswordUsingToken} from 'supertokens-auth-react/recipe/emailpassword';
 import Session from 'supertokens-auth-react/recipe/session';
 import {Helium} from "supertokens-auth-react-themes";
 
@@ -50,13 +50,13 @@ function App() {
 ### Examples
 
 
-![Screenshot 1](../assets/helium/screenshot1.png?raw=true)
-![Screenshot 2](../assets/helium/screenshot2.png?raw=true)
-![Screenshot 3](../assets/helium/screenshot3.png?raw=true)
-![Screenshot 4](../assets/helium/screenshot4.png?raw=true)
-<img width="300px" src="../assets/helium/screenshot5.png?raw=true"/>
-<img width="300px" src="../assets/helium/screenshot6.png?raw=true"/>
-<img width="300px" src="../assets/helium/screenshot7.png?raw=true"/>
+![Screenshot 1](https://raw.githubusercontent.com/NkxxkN/supertokens-auth-react-themes/main/assets/helium/screenshot1.png?raw=true)
+![Screenshot 2](https://raw.githubusercontent.com/NkxxkN/supertokens-auth-react-themes/main/assets/helium/screenshot2.png?raw=true)
+![Screenshot 3](https://raw.githubusercontent.com/NkxxkN/supertokens-auth-react-themes/main/assets/helium/screenshot3.png?raw=true)
+![Screenshot 4](https://raw.githubusercontent.com/NkxxkN/supertokens-auth-react-themes/main/assets/helium/screenshot4.png?raw=true)
+<img width="300px" src="https://raw.githubusercontent.com/NkxxkN/supertokens-auth-react-themes/main/assets/helium/screenshot5.png?raw=true"/>
+<img width="300px" src="https://raw.githubusercontent.com/NkxxkN/supertokens-auth-react-themes/main/assets/helium/screenshot6.png?raw=true"/>
+<img width="300px" src="https://raw.githubusercontent.com/NkxxkN/supertokens-auth-react-themes/main/assets/helium/screenshot7.png?raw=true"/>
 
 
 ## Documentation

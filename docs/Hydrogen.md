@@ -9,7 +9,7 @@
 import React from 'react';
 
 import SuperTokens from 'supertokens-auth-react';
-import EmailPassword from 'supertokens-auth-react/recipe/emailpassword';
+import EmailPassword, {SignInAndUp, ResetPasswordUsingToken} from 'supertokens-auth-react/recipe/emailpassword';
 import Session from 'supertokens-auth-react/recipe/session';
 import {Hydrogen} from "supertokens-auth-react-themes";
 
@@ -50,17 +50,17 @@ function App() {
 ### Examples
 
 
-![Screenshot 1](../assets/hydrogen/screenshot1.png?raw=true)
-![Screenshot 2](../assets/hydrogen/screenshot2.png?raw=true)
-![Screenshot 3](../assets/hydrogen/screenshot3.png?raw=true)
-![Screenshot 4](../assets/hydrogen/screenshot4.png?raw=true)
-![Screenshot 5](../assets/hydrogen/screenshot5.png?raw=true)
-![Screenshot 8](../assets/hydrogen/screenshot8.png?raw=true)
+![Screenshot 1](https://raw.githubusercontent.com/NkxxkN/supertokens-auth-react-themes/main/assets/hydrogen/screenshot1.png?raw=true)
+![Screenshot 2](https://raw.githubusercontent.com/NkxxkN/supertokens-auth-react-themes/main/assets/hydrogen/screenshot2.png?raw=true)
+![Screenshot 3](https://raw.githubusercontent.com/NkxxkN/supertokens-auth-react-themes/main/assets/hydrogen/screenshot3.png?raw=true)
+![Screenshot 4](https://raw.githubusercontent.com/NkxxkN/supertokens-auth-react-themes/main/assets/hydrogen/screenshot4.png?raw=true)
+![Screenshot 5](https://raw.githubusercontent.com/NkxxkN/supertokens-auth-react-themes/main/assets/hydrogen/screenshot5.png?raw=true)
+![Screenshot 8](https://raw.githubusercontent.com/NkxxkN/supertokens-auth-react-themes/main/assets/hydrogen/screenshot8.png?raw=true)
 
 
-<img width="300px" src="../assets/hydrogen/screenshot6.png?raw=true"/>
+<img width="300px" src="https://raw.githubusercontent.com/NkxxkN/supertokens-auth-react-themes/main/assets/hydrogen/screenshot6.png?raw=true"/>
 
-<img width="300px" src="../assets/hydrogen/screenshot7.png?raw=true"/>
+<img width="300px" src="https://raw.githubusercontent.com/NkxxkN/supertokens-auth-react-themes/main/assets/hydrogen/screenshot7.png?raw=true"/>
 
 
 ### SVG Backgrounds

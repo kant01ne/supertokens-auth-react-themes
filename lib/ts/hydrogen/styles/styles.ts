@@ -129,6 +129,11 @@ export function getThemeStyles(palette: NormalisedPalette): NormalisedDefaultSty
                 display: "none"
             }
         },
+
+        generalError: {
+            marginBottom: "15px"
+        },
+
         pageTestimonialQuote: {
             fontSize: palette.fonts.size[2],
             fontWeight: 300,

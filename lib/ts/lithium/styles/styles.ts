@@ -171,7 +171,7 @@ export function getThemeStyles(palette: NormalisedPalette): NormalisedDefaultSty
         },
         headerTogglePrimary: {
             position: "absolute",
-            fontSize: "1.2em",
+            fontSize: "1em",
             right: "1rem",
             textDecoration: "underline",
             cursor: "pointer",
@@ -191,7 +191,8 @@ export function getThemeStyles(palette: NormalisedPalette): NormalisedDefaultSty
             letterSpacing: "0.2px",
             fontSize: palette.fonts.size[3],
             borderRadius: "12px",
-            color: palette.colors.error
+            color: palette.colors.error,
+            marginBottom: "15px"
         },
 
         input: {
