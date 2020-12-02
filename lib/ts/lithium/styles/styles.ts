@@ -171,13 +171,10 @@ export function getThemeStyles(palette: NormalisedPalette): NormalisedDefaultSty
         },
         headerTogglePrimary: {
             position: "absolute",
+            fontSize: "1.2em",
             right: "1rem",
             textDecoration: "underline",
             cursor: "pointer",
-            fontSize: "0.8em",
-            "@media (max-width: 440px)": {
-                fontSize: "1.2em"
-            },
             color: palette.colors.textLink
         },
 
@@ -235,7 +232,7 @@ export function getThemeStyles(palette: NormalisedPalette): NormalisedDefaultSty
 
         inputErrorMessage: {
             paddingLeft: "5px",
-            fontSize: palette.fonts.size[2]
+            fontSize: palette.fonts.size[1]
         },
 
         formRow: {

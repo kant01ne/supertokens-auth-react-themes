@@ -211,7 +211,7 @@ export function getThemeStyles(palette: NormalisedPalette): NormalisedDefaultSty
         },
 
         inputErrorMessage: {
-            fontSize: "14px",
+            fontSize: palette.fonts.size[1],
             textAlign: "center"
         },
 
