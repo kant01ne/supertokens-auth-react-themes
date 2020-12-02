@@ -39,7 +39,7 @@
   },
   "peerDependencies": {
     "@emotion/core": "^10.0.27",
-    "supertokens-auth-react": "https://github.com/supertokens/supertokens-auth-react#0.2",
+    "supertokens-auth-react": "^0.2.0",
     "emotion": "10.0.27",
     "react-shadow": "18.4.2",
     "emotion-server": "10.0.27"
