@@ -14,7 +14,7 @@ Please contact us if you'd like your theme to be listed in this repository for o
 You need to have completed the [Supertokens front-end quick setup]()
 
 ```js
-npm install --save supertokens-auth-react-themes
+npm install --save supertokens-react-themes
 ```
 ## Demo
 
