@@ -2,7 +2,7 @@ import React from 'react';
 import {SignInAndUp, ResetPasswordUsingToken} from 'supertokens-auth-react/recipe/emailpassword';
 import {
   Lithium,
-} from 'supertokens-auth-react-themes/';
+} from 'supertokens-react-themes/';
 import {getQueryParams} from "../utils";
 
 const backgroundId = getQueryParams("backgroundId") || Math.floor(Math.random() * 9) +1;

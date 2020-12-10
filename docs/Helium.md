@@ -11,7 +11,7 @@ import React from 'react';
 import SuperTokens from 'supertokens-auth-react';
 import EmailPassword, {SignInAndUp, ResetPasswordUsingToken} from 'supertokens-auth-react/recipe/emailpassword';
 import Session from 'supertokens-auth-react/recipe/session';
-import {Helium} from "supertokens-auth-react-themes";
+import {Helium} from "supertokens-react-themes";
 
 SuperTokens.init({
     appInfo: {...},

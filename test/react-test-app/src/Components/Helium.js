@@ -2,7 +2,7 @@ import React from 'react';
 import {SignInAndUp, ResetPasswordUsingToken} from 'supertokens-auth-react/recipe/emailpassword';
 import {
   Helium,
-} from 'supertokens-auth-react-themes/';
+} from 'supertokens-react-themes/';
 const logo = "/logo.png"
 
 function Auth() {
