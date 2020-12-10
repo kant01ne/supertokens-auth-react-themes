@@ -18,7 +18,7 @@ npm install --save supertokens-react-themes
 ```
 ## Demo
 
-[Live Demo](http://supertokens-auth-react-theme.surge.sh/)
+[Live Demo](https://supertokens-auth-react-themes.surge.sh/)
 ## Examples
 ### Hydrogen
 
